@@ -46,20 +46,9 @@ while ($row = $result->fetch_assoc()) {
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="home.js"></script>
     <link rel="stylesheet" href="home.css">
-    <style>
-        .selector-button {
-            transition: all 0.15s ease-in-out;
-        }
-        .active-section-button {
-            background-color: #4f46e5 !important; /* bg-indigo-600 */
-            color: #ffffff !important; /* text-white */
-            border-color: #4f46e5 !important; /* border-indigo-600 */
-        }
-        .active-section-button:hover {
-            background-color: #4338ca !important; /* hover:bg-indigo-700 */
-        }
-    </style>
+
 </head>
 
 <body class="min-h-screen antialiased flex flex-col items-center">
@@ -145,84 +134,6 @@ while ($row = $result->fetch_assoc()) {
         </main>
 
     </div>
-
-    <script>
-    $(document).ready(function () {
-        $('.delete-button').on('click', function (e) {
-            let todoId = $(this).closest('li').attr('id');
-            $.ajax({
-                url: '../../router/router.php',
-                type: 'POST',
-                data: {
-                    delete_todo: true,
-                    id: todoId
-                },
-                success: function (response) {
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error:', status, error);
-                }
-            });
-        });
-
-        $('.task-checkbox').on('click', function (e) {
-            let todoId = $(this).closest('li').attr('id');
-            let isDone = $(this).is('[name=mark_as_done]');
-            let action = isDone ? 'mark_as_done' : 'mark_as_undone';
-
-            let data = {};
-            data[action] = true;
-            data['id'] = todoId;
-
-            $.ajax({
-                url: '../../router/router.php',
-                type: 'POST',
-                data: data,
-                success: function (response) {
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error:', status, error);
-                }
-            });
-        });
-
-        $('#signout').on('click', function (e) {
-            $.ajax({
-                url: '../../router/router.php',
-                type: 'POST',
-                data: {
-                    "logout_user": true
-                },
-                success: function (response) {
-                    location.reload();
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error:', status, error);
-                }
-            })
-        })
-
-        // Section filter logic
-        $('#section-selector').on('click', '.selector-button', function() {
-            const sectionToShow = $(this).attr('data-section');
-
-            // Update active button style
-            $('.selector-button').removeClass('active-section-button');
-            $(this).addClass('active-section-button');
-
-            if (sectionToShow === 'All') {
-                $('.section-container').show();
-            } else {
-                $('.section-container').hide();
-                $('.section-container').filter(function() {
-                    return $(this).attr('data-section') === sectionToShow;
-                }).show();
-            }
-        });
-    });
-    </script>
 </body>
 
 </html>
