@@ -39,6 +39,7 @@ class Connection extends mysqli
             title VARCHAR(255) NOT NULL,
             done BOOLEAN NOT NULL DEFAULT FALSE,
             user_id INT,
+            section VARCHAR(255) NULL,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )";
         $this->query($sql);

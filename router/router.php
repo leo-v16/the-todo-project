@@ -50,12 +50,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // CREATE TODO
     if (isset($_POST["create_todo"])) {
         $title = $_POST["title"];
+        $section = $_POST["section"];
         $user_id = $_SESSION["user_id"]; // Get user_id from session
     
         $conn = new Connection();
-        $sql = "INSERT INTO todos (title, user_id) VALUES (?, ?)";
+        $sql = "INSERT INTO todos (title, user_id, section) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $title, $user_id);
+        $stmt->bind_param("sis", $title, $user_id, $section);
 
         if ($stmt->execute()) {
             header("Location: ../pages/home/home.php");
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["id"];
 
         $conn = new Connection();
-        $sql = "UPDATE todos SET done = FALSE WHERE id = ?";
+        $sql = "UPDATE todos SET done = TRUE WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
 
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $id = $_POST["id"];
 
         $conn = new Connection();
-        $sql = "UPDATE todos SET done = TRUE WHERE id = ?";
+        $sql = "UPDATE todos SET done = FALSE WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
 
