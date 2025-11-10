@@ -15,14 +15,14 @@ $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Define a palette of background colors
+
 $colors = [
     'bg-violet-50', 'bg-gray-50', 'bg-red-50', 'bg-orange-50',
     'bg-yellow-50', 'bg-green-50', 'bg-teal-50', 'bg-blue-50',
     'bg-indigo-50', 'bg-purple-50', 'bg-pink-50'
 ];
 
-// Group tasks by section and assign colors
+
 $tasks_by_section = [];
 $section_colors = [];
 $color_index = 0;
@@ -43,7 +43,7 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasks: Your Todo App</title>
-    <!-- Load Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="home.js"></script>
@@ -60,11 +60,11 @@ while ($row = $result->fetch_assoc()) {
         <main id="app-container" class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 min-h-[300px]">
 
             <div class="w-full">
-                <!-- Section Selector -->
+
                 <div id="section-selector" class="flex items-center space-x-2 mb-6 border-b pb-4 overflow-x-auto">
                     <button data-section="All" class="selector-button active-section-button px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">All</button>
                     <?php foreach (array_keys($tasks_by_section) as $section_name): ?>
-                        <?php $button_color_class = $section_colors[$section_name] ?? 'bg-white'; // Fallback to white if no color assigned ?>
+                        <?php $button_color_class = 'bg-white';?>
                         <button data-section="<?php echo htmlspecialchars($section_name); ?>" class="selector-button px-4 py-2 text-sm font-medium text-gray-700 <?php echo $button_color_class; ?> border border-gray-300 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             <?php echo htmlspecialchars($section_name); ?>
                         </button>
