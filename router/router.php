@@ -1,6 +1,7 @@
 <?php
 session_start();
-require(__DIR__ . "/../database/database.php");
+
+require_once '../database/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // LOGIN USER

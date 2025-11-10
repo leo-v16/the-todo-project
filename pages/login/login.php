@@ -19,8 +19,20 @@
         <main id="app-container" class="bg-white p-6 sm:p-10 rounded-xl shadow-lg border border-gray-100 min-h-[300px]">
 
             <div class="max-w-md mx-auto">
+<<<<<<< HEAD
                 <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-2">
                     Sign in to your account
+=======
+<<<<<<< HEAD
+                <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-2"><a href="google-login.php" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-md text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-200 transform hover:scale-[1.02]">
+                        Sign in with Google
+                    </a>
+
+=======
+                <h2 class="text-center text-3xl font-extrabold text-gray-900 mb-2">
+                    Sign in to your account
+>>>>>>> ba53b79924d9c8a6b49f4cb70071fa508dff5fc4
+>>>>>>> f4b638c84266bc5492804078267a3487083bdeac
                 </h2>
                 <p class="text-center text-sm text-gray-600 mb-8">
                     Welcome back to Tasks!
