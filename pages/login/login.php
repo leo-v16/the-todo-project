@@ -1,3 +1,8 @@
+<?php
+    require_once __DIR__ . '/../../vendor/autoload.php';
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
+    $dotenv->load();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,7 +71,7 @@
                 </div>
 
                 <div class="mt-6">
-                    <div id="g_id_onload" data-client_id="<?php echo getenv('GOOGLE_CLIENT_ID'); ?>"
+                    <div id="g_id_onload" data-client_id="<?php echo $_ENV['GOOGLE_CLIENT_ID']; ?>"
                         data-callback="handleCredentialResponse">
                     </div>
                     <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
