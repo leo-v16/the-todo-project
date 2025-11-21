@@ -129,7 +129,7 @@ while ($row = $result->fetch_assoc()) {
                         📅 View Google Calendar
                     </a>
                     <div class="flex items-center space-x-4">
-        <span class="text-sm text-gray-500"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <span class="text-sm text-gray-500 font-bold"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
         <button id="signout" name="logout_user"
             class="text-sm font-medium text-gray-500 hover:text-indigo-600 transition duration-150">
             Sign Out
