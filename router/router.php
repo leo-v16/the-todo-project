@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
+$dotenv->load();
+
 require_once '../database/database.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -60,8 +64,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sis", $title, $user_id, $section);
 
         if ($stmt->execute()) {
-            header("Location: ../pages/home/home.php");
-            exit();
+            $task_id = $conn->insert_id;
+            $_SESSION['task_id'] = $task_id;
+            $_SESSION['task_name'] = $title;
+    
+            $client = new Google_Client();
+            $client->setClientId($_ENV['GOOGLE_CLIENT_ID']);
+            $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET']);
+            $client->setRedirectUri("http://localhost/todo/pages/home/home.php");
+            $client->addScope('https://www.googleapis.com/auth/calendar.events');
+    
+            if (isset($_SESSION['access_token']) && $_SESSION['access_token']) {
+                $client->setAccessToken($_SESSION['access_token']);
+            }
+    
+            if ($client->isAccessTokenExpired()) {
+                if (isset($_SESSION['username'])) {
+                    $client->setLoginHint($_SESSION['username']);
+                }
+                $auth_url = $client->createAuthUrl();
+                header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
+                exit();
+            } else {
+                header('Location: ../pages/login/google-callback.php');
+                exit();
+            }
         }
     }
 
@@ -116,4 +143,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../pages/login/login.php");
         exit();
     }
+
+
 }

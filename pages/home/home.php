@@ -123,7 +123,10 @@ while ($row = $result->fetch_assoc()) {
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-gray-100 flex justify-end">
+                <div class="mt-8 pt-6 border-t border-gray-100 flex justify-end items-center">
+                    <div class="text-sm text-gray-600 mr-4">
+                        Logged in as: <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
+                    </div>
                     <button id="signout" name="logout_user"
                         class="text-sm font-medium text-gray-500 hover:text-indigo-600 transition duration-150">
                         Sign Out

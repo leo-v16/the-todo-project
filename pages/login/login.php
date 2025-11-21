@@ -70,13 +70,13 @@
                     </div>
                 </div>
 
-                <div class="mt-6">
-                    <div id="g_id_onload" data-client_id="<?php echo $_ENV['GOOGLE_CLIENT_ID']; ?>"
-                        data-callback="handleCredentialResponse">
+                    <div class="mt-6 w-full flex justify-center">
+                        <div id="g_id_onload" data-client_id="<?php echo $_ENV['GOOGLE_CLIENT_ID']; ?>"
+                            data-callback="handleCredentialResponse">
+                        </div>
+                        <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
+                            data-text="continue_with" data-size="large" data-logo_alignment="left"></div>
                     </div>
-                    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline"
-                        data-text="continue_with" data-size="large" data-logo_alignment="left"></div>
-                </div>
             </div>
         </main>
 
