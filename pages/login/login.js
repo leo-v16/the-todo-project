@@ -1,6 +1,6 @@
 function handleCredentialResponse(response) {
     $.ajax({
-        url: 'google-auth.php',
+        url: 'google-callback.php',
         type: 'POST',
         data: { credential: response.credential },
         success: function (response) {
