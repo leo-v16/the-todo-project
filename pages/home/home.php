@@ -123,14 +123,18 @@ while ($row = $result->fetch_assoc()) {
                     </ul>
                 </div>
 
-                <div class="mt-8 pt-6 border-t border-gray-100 flex justify-end items-center">
-                    <div class="text-sm text-gray-600 mr-4">
-                        Logged in as: <strong><?php echo htmlspecialchars($_SESSION['username']); ?></strong>
-                    </div>
-                    <button id="signout" name="logout_user"
-                        class="text-sm font-medium text-gray-500 hover:text-indigo-600 transition duration-150">
-                        Sign Out
-                    </button>
+                <div class="mt-8 pt-6 border-t border-gray-100 flex justify-between items-center">
+                    <a href="calendar.php" 
+                        class="text-sm font-medium text-indigo-600 hover:text-indigo-700 transition duration-150 flex items-center">
+                        📅 View Google Calendar
+                    </a>
+                    <div class="flex items-center space-x-4">
+        <span class="text-sm text-gray-500"><?php echo htmlspecialchars($_SESSION['username']); ?></span>
+        <button id="signout" name="logout_user"
+            class="text-sm font-medium text-gray-500 hover:text-indigo-600 transition duration-150">
+            Sign Out
+        </button>
+    </div>
                 </div>
             </div>
 
