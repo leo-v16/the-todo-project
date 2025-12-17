@@ -30,6 +30,37 @@
 
             <div class="max-w-md mx-auto">
                 <form class="space-y-6" action="../../router/router.php" method="POST">
+                    <div class="flex gap-4">
+                        <div class="w-1/2">
+                            <label for="first_name" class="block text-sm font-medium text-gray-700">
+                                First Name
+                            </label>
+                            <div class="mt-1">
+                                <input id="first_name" name="first_name" type="text"
+                                    class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+                        <div class="w-1/2">
+                            <label for="last_name" class="block text-sm font-medium text-gray-700">
+                                Last Name
+                            </label>
+                            <div class="mt-1">
+                                <input id="last_name" name="last_name" type="text"
+                                    class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="date_of_birth" class="block text-sm font-medium text-gray-700">
+                            Date Of Birth
+                        </label>
+                        <div class="mt-1">
+                            <input id="date_of_birth" name="date_of_birth" type="date"
+                                class="appearance-none block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                    </div>
+
                     <div>
                         <label for="username" class="block text-sm font-medium text-gray-700">
                             Username

@@ -35,10 +35,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // User does not exist, create new user
+            $first_name = $_POST["first_name"] ?? null;
+            $last_name = $_POST["last_name"] ?? null;
+            $date_of_birth = $_POST["date_of_birth"] ?? null;
+
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            $sql = "INSERT INTO users (username, password, first_name, last_name, date_of_birth) VALUES (?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $username, $hashed_password);
+            $stmt->bind_param("sssss", $username, $hashed_password, $first_name, $last_name, $date_of_birth);
             if ($stmt->execute()) {
                 // Log in new user
                 $user_id = $conn->insert_id;
